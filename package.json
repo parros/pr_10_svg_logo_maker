@@ -1,6 +1,8 @@
 {
   "dependencies": {
-    "inquirer": "^9.2.20",
+    "color": "^4.2.3",
+    "inquirer": "^8.2.4",
+    "inquirer-maxlength-input-prompt": "^1.0.2",
     "jest": "^29.7.0"
   }
 }
