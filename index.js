@@ -1,6 +1,7 @@
 const inquirer = require('inquirer')
 const MaxLengthInputPrompt = require('inquirer-maxlength-input-prompt')
-const Color = require('color')
+const fs = require('fs')
+const {Circle, Square, Triangle} = require('./lib/shapes.js')
 
 inquirer.registerPrompt('maxlength-input', MaxLengthInputPrompt)
 
@@ -28,4 +29,23 @@ inquirer
             name: 'shapeColor',
             message: 'Enter a color for the shape'
         }
-    ])
+    ]).then((answers) => {
+        let logoContent = ''
+        console.log(answers.shape)
+        if (answers.shape === 'square') {
+            logoContent = new Square(answers.text, answers.textColor, answers.shapeColor)
+            console.log('square')
+        }   else if (answers.shape === 'circle') {
+            logoContent = new Circle(answers.text, answers.textColor, answers.shapeColor)
+            console.log('circle')
+        }   else if (answers.shape === 'triangle') {
+            logoContent = new Triangle(answers.text, answers.textColor, answers.shapeColor)
+            console.log('triangle')
+        }
+        console.log(logoContent)
+        const logoDone = logoContent.render()
+
+        fs.writeFileSync('logo.svg', logoDone, (err) =>
+            err ? console.log(err) : console.log('Generated logo.svg')
+        )
+    })
