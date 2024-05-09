@@ -1,8 +1,23 @@
 {
   "dependencies": {
     "inquirer": "^8.2.4",
-    "inquirer-maxlength-input-prompt": "^1.0.2",
+    "inquirer-maxlength-input-prompt": "^1.0.2"
+  },
+  "devDependencies": {
     "jest": "^29.7.0"
-  }
-  
+  },
+  "name": "pr_10_svg_logo_maker",
+  "version": "1.0.0",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
 }
