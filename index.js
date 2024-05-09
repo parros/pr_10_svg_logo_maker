@@ -5,7 +5,7 @@ const {Circle, Square, Triangle} = require('./lib/shapes.js')
 
 inquirer.registerPrompt('maxlength-input', MaxLengthInputPrompt)
 
-const logoInfo =(text, textColor, shapeInfo) => `        
+const logoInfo = (text, textColor, shapeInfo) => `        
     <svg version="1.1"
     width="300" height="200"
     xmlns="http://www.w3.org/2000/svg">
@@ -45,18 +45,17 @@ inquirer
 
         let shapeContent = ''
         if (answers.shape === 'square') {
-            shapeContent = new Square( answers.shapeColor)
+            shapeContent = new Square()
         }   else if (answers.shape === 'circle') {
-            shapeContent = new Circle(answers.shapeColor)
+            shapeContent = new Circle()
         }   else if (answers.shape === 'triangle') {
-            shapeContent = new Triangle(answers.shapeColor)
+            shapeContent = new Triangle()
         }
-
+        
+        shapeContent.setColor(answers.shapeColor)
         const shapeInfo = shapeContent.render()
 
         const logoDone = logoInfo(answers.text, answers.textColor, shapeInfo)
-
-        console.log(logoDone)
 
         fs.writeFileSync('logo.svg', logoDone, (err) =>
             err ? console.log(err) : console.log('Generated logo.svg')
