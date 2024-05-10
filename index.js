@@ -3,8 +3,10 @@ const MaxLengthInputPrompt = require('inquirer-maxlength-input-prompt')
 const fs = require('fs')
 const {Circle, Square, Triangle} = require('./lib/shapes.js')
 
+// limits max input length for inquirer prompt
 inquirer.registerPrompt('maxlength-input', MaxLengthInputPrompt)
 
+// SVG general information
 const logoInfo = (text, textColor, shapeInfo) => `        
     <svg version="1.1"
     width="300" height="200"
@@ -16,7 +18,7 @@ const logoInfo = (text, textColor, shapeInfo) => `
 
     </svg>
     `
-
+// Asks user for text, text color, shape and shape color when prompted
 inquirer
     .prompt([
         {
@@ -43,6 +45,7 @@ inquirer
         }
     ]).then((answers) => {
 
+        // Picks shape information based on answer from user
         let shapeContent = ''
         if (answers.shape === 'square') {
             shapeContent = new Square()
@@ -51,12 +54,14 @@ inquirer
         }   else if (answers.shape === 'triangle') {
             shapeContent = new Triangle()
         }
-        
+
         shapeContent.setColor(answers.shapeColor)
         const shapeInfo = shapeContent.render()
 
+        // Combines SVG general information and user input
         const logoDone = logoInfo(answers.text, answers.textColor, shapeInfo)
 
+        // writes SVG file
         fs.writeFileSync('logo.svg', logoDone, (err) =>
             err ? console.log(err) : console.log('Generated logo.svg')
         )
