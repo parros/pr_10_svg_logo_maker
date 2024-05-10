@@ -11,7 +11,7 @@ Remember to type npm i on the command line in the generator directory to install
 ## Usage
 
 
-To use the generator, type node index.js on the command line in the generator directory then you can start answering the questions to create a logo.
+To use the generator, type node index.js on the command line in the generator directory then you can start answering the questions to create a logo. After finishing from answering the questions, a SVG file will be made with the newly created logo.
 
 ## Credits
 
