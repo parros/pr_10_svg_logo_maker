@@ -10,13 +10,12 @@ Remember to type npm i on the command line in the generator directory to install
 
 ## Usage
 
-N/A
 
 To use the generator, type node index.js on the command line in the generator directory then you can start answering the questions to create a logo.
 
 ## Credits
 
-I got the code for the badges from https://gist.github.com/lukas-h/2a5d00690736b4c3a7ba
+N/A
 
 ## License
 
